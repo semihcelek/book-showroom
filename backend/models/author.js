@@ -6,13 +6,26 @@ const AuthorSchema = new mongoose.Schema({
         required: true,
         minlength: 2
     },
-    meetups: [{
+    age: {
+        type: Number,
+        required: true,
+        min: 18
+    },
+    books: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Meetup',
+        ref: 'Book',
+        autopopulate: {
+            maxDepth: 1
+        }
+    }],
+    novels: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Novel',
         autopopulate: {
             maxDepth: 1
         }
     }]
+   
 
 })
 

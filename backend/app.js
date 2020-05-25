@@ -1,4 +1,25 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const authorRouter = require('./routes/author')
+const bookRouter = require('./routes/book')
+const novelRouter = require('./routes/novel')
 
+
+require('./mongodb-connection')
 
 const app = express()
+
+app.set('view engine', 'pug')
+app.use(bodyParser.json())
+
+app.use('/author', authorRouter) 
+app.use('/book', bookRouter)
+app.use('/novel', novelRouter)
+
+
+
+app.get('/', (req, res) => {
+    res.render('index')
+})
+
+module.exports = app

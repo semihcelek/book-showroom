@@ -6,18 +6,21 @@ const NovelSchema =  new mongoose.Schema ({
         required: true,
         minlength: 2
     },
-    Genre: {
+    genre: {
         type: String,
         required: true,
         minlength: 2
     },
     writer: [{
+
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Author',
+        ref:'Author',
         autopopulate: {
-            maxDepth: 1
-        }
-    }]
+             maxDepth: 1
+            }
+            
+}]
+   
 })
 
 NovelSchema.plugin(require('mongoose-autopopulate'))

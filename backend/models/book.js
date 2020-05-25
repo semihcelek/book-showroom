@@ -8,7 +8,7 @@ const BookSchema = new mongoose.Schema({
 },
     year: {
         type: Number,
-        required: false
+        required: true
 },
     authors: [{
         type: mongoose.SchemaTypes.ObjectId,
@@ -17,12 +17,14 @@ const BookSchema = new mongoose.Schema({
             maxDepth: 1
         }
             
-    }]
+    }],
+    
 })
+BookSchema.plugin(require('mongoose-autopopulate'))
 
 const BookModel = mongoose.model('Book', BookSchema)
 
-BookSchema.plugin(require('mongoose-autopopulate'))
+
 
 
 module.exports = BookModel
