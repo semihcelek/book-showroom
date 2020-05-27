@@ -23,7 +23,7 @@ export default new Vuex.Store({
       commit('SET_COUNTER', newCount)
     },
      async fetchBooks({commit}) {
-      const newBooks = await axios.get('http://localhost:3000/author/all/json')
+      const newBooks = await axios.get('http://localhost:3000/book/all/json')
       commit('SET_BOOKS', newBooks.data)
       
     }

@@ -1,5 +1,6 @@
 <script>
 // @ is an alias to /src
+import BookCard from '@/components/book-card.vue' 
 import HelloWorld from '@/components/HelloWorld.vue'
 import {mapState, mapActions } from 'vuex'
 
@@ -7,7 +8,8 @@ import {mapState, mapActions } from 'vuex'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
+    BookCard
   },
   computed: {
     ...mapState(['counter','books'])
@@ -26,9 +28,12 @@ export default {
 
 
 <template lang="pug">
-  h2 Hello Mf
-   div {{ counter }}
-   div {{ books }}
+h2 Hello Mf 
+   
+  button(@click="incrementCounter") Increment
+  div {{ counter }}
+   
+  book-card(v-for="book in books", :book="book") 
   
 
 
