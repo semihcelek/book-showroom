@@ -3,11 +3,13 @@ const bodyParser = require('body-parser')
 const authorRouter = require('./routes/author')
 const bookRouter = require('./routes/book')
 const novelRouter = require('./routes/novel')
+const cors = require('cors')
 
 
 require('./mongodb-connection')
 
 const app = express()
+app.use(cors())
 
 app.set('view engine', 'pug')
 app.use(bodyParser.json())

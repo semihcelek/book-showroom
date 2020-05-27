@@ -9,6 +9,11 @@ router.get('/all', async (req,res) => {
     res.render('list', { items: authors })
 })
 
+router.get('/all/json', async (req,res) => {
+    const authors =  await AuthorService.findAll()
+    res.send(authors)
+})
+
 router.get('/:id', async (req, res) => {
     const user = await AuthorService.find(req.params.id)
     res.render('data', {data: user})
