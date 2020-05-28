@@ -3,18 +3,18 @@ import AuthorCard from '@/components/author-card.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
-    name:'About',
+    name:'Authors',
     components: {
         AuthorCard
     },
 computed: {
-    ...mapState(['author'])
+    ...mapState(['authors'])
 },
 methods: {
-    ...mapActions(['fetchAuthor'])
+    ...mapActions(['fetchAuthors'])
 },
 created(){
-    this.fetchAuthor(this.$route.params.id)
+    this.fetchAuthors()
 }
 }
 
@@ -25,7 +25,7 @@ created(){
 <template lang="pug">
  article
    h1 Our Best Writers !!
-   author-card(:author="author")
+   author-card(v-for="author in authors", :author="author", :key="author.id")
 
    
 </template>

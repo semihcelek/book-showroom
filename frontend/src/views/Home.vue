@@ -32,20 +32,20 @@ export default {
 
 <template lang="pug">
 main 
-  h2 Hello Mf 
-  
-  section
-    button.increment-btn(@click="incrementCounter") Increment
-    div {{ counter }}
+ 
   section
     book-card(v-for="book in books", :book="book") 
-    author-card(v-for= "author in authors", :author="author")
+    
+  section
     button.increment-btn(@click="incrementCounter") Increment
     div {{ counter }}
 
 </template>
 
-  <<style scoped>
+  <style scoped>
+  div {
+    background-image: url('/assets/background.jpg');
+  }
   .increment-btn {
      color: darkcyan;
      padding: 10px;

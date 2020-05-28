@@ -19,6 +19,11 @@ router.get('/:id', async (req, res) => {
     res.render('data', {data: user})
 })
 
+router.get('/:id/json', async (req, res) => {
+    const user = await AuthorService.find(req.params.id)
+    res.send(user)
+})
+
 router.post('/', async (req, res) => {
     const user =await AuthorService.add(req.body)
     res.send(user)

@@ -8,7 +8,9 @@ export default new Vuex.Store({
   state: {
     counter: 0,
     books: [],
-    authors: []
+    authors: [],
+    author: {}
+
   },
   mutations: {
     SET_COUNTER(state, newCount) {
@@ -19,6 +21,9 @@ export default new Vuex.Store({
     },
     SET_AUTHORS(state, data){
       state.authors = data
+    },
+    SET_AUTHOR(state, data){
+      state.author = data
     }
   },
   actions: {
@@ -33,7 +38,11 @@ export default new Vuex.Store({
      async fetchAuthors({commit}) {
        const newAuthors = await axios.get('http://localhost:3000/author/all/json')
        commit('SET_AUTHORS', newAuthors.data)
-     }
+     },
+     async fetchAuthor({commit}, id){
+       const infoAuthor = await axios.get(`http://localhost:3000/author/${id}/json`)
+       commit ('SET_AUTHOR', infoAuthor.data)
+      }
   },
   modules: {
   }

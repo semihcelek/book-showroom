@@ -1,13 +1,21 @@
 <script>
 export default {
     name:'AuthorCard',
-    props: ['author']
+    props: ['author'],
+    computed: {
+      authorUrl() {
+        return `/author/${this.author._id}`
+      }
+    }
     
 }
 </script>
 
 <template lang="pug">
-div.card {{author.name}} {{author.age}}
+article.card 
+  img(:src="`http://picsum.photos/300/200?random=${author._id}`", alt="")
+  h1 {{author.name}} 
+  h2 {{author.age}}
 
     
 </template>
