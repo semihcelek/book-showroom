@@ -1,16 +1,14 @@
 <script>
 export default {
-    name:'BookCard',
-    props: ['book']
+    name:'AuthorCard',
+    props: ['author']
     
 }
 </script>
 
 <template lang="pug">
-  article.card 
-    img(:src="`http://picsum.photos/300/200?random=${book._id}`")
-    h1 {{ book.name }} 
-    h2   {{ book.year }}
+div.card {{author.name}} {{author.age}}
+
     
 </template>
 
@@ -19,7 +17,7 @@ export default {
    display: inline-block;
    text-align: left;
    padding: 20px;
-   border: 1px solid #ddd ;
+   border: 1px;
    border-radius: 3px;
    margin: 20px;
 
