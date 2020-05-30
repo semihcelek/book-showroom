@@ -32,15 +32,15 @@ export default new Vuex.Store({
       commit('SET_COUNTER', newCount)
     },
      async fetchBooks({commit}) {
-      const newBooks = await axios.get('http://localhost:3000/book/all/json')
+      const newBooks = await axios.get(`${process.env.VUE_APP_API_URL}/book/all/json`)
       commit('SET_BOOKS', newBooks.data)
     },
      async fetchAuthors({commit}) {
-       const newAuthors = await axios.get('http://localhost:3000/author/all/json')
+       const newAuthors = await axios.get(`${process.env.VUE_APP_API_URL}/author/all/json`)
        commit('SET_AUTHORS', newAuthors.data)
      },
      async fetchAuthor({commit}, id){
-       const infoAuthor = await axios.get(`http://localhost:3000/author/${id}/json`)
+       const infoAuthor = await axios.get(`${process.env.VUE_APP_API_URL}/author/${id}/json`)
        commit ('SET_AUTHOR', infoAuthor.data)
       }
   },
