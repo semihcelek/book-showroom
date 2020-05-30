@@ -14,7 +14,9 @@ export default {
 <template lang="pug">
 article.card 
   img(:src="`http://picsum.photos/300/200?random=${author._id}`", alt="")
-  h1 {{author.name}} 
+  h1 
+           router-link(:to="authorUrl") {{author.name}}
+
   h2 {{author.age}}
 
     
