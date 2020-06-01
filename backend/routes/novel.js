@@ -3,6 +3,10 @@ const router = express.Router()
 
 const NovelService = require('../services/novel-service')
 
+const ensureLogin = require('../middleware/ensure-login')
+
+router.get('/*/json', ensureLogin)
+
 router.get('/all', async (req,res) => {
     const novel =   await NovelService.findAll()
     res.render('list', {items: novel})
